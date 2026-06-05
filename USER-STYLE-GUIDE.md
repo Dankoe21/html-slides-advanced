@@ -89,9 +89,9 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Syne | 800 ExtraBold | ~50–70pt | Cover title, closing title |
-| Syne | 700 Bold | ~33–45pt | Slide titles (h2) |
-| Syne | 700 Bold | ~25–35pt | Sub-headings, agenda numbers |
+| Archivo Black | 400 | ~50–70pt | Cover title, closing title |
+| Archivo Black | 400 | ~33–45pt | Slide titles (h2) |
+| Archivo Black | 400 | ~25–35pt | Sub-headings, agenda numbers |
 | DM Sans | 500 Medium | ~15–18pt | Eyebrows / labels |
 | DM Sans | 400 Regular | ~16–20pt | Body text |
 | DM Sans | 600 SemiBold | ~15–18pt | Bullets, stat labels |
@@ -217,7 +217,7 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Syne | 700–800 | ~50–70pt titles / ~33–45pt headings | All display headlines |
+| Archivo Black | 400 | ~50–70pt titles / ~33–45pt headings | All display headlines |
 | Space Mono | 400–700 | ~15–18pt body / ~13–15pt captions | Body text, labels, code-style copy |
 
 *Source: Google Fonts*
@@ -1124,7 +1124,7 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Syne | 700–800 | ~50–70pt titles / ~33–45pt headings | Display headlines — geometric, approachable |
+| Archivo Black | 400 | ~50–70pt titles / ~33–45pt headings | Display headlines — bold, confident |
 | Space Grotesk | 400–500 | ~15–20pt body / ~13–15pt captions | Body text, card labels, captions |
 
 *Source: Google Fonts*

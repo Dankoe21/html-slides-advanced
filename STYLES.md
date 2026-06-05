@@ -89,7 +89,7 @@ Pure black with deep navy depth and warm amber accent. Bold, contemporary, high 
 
 **Font import:**
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
 ```
 
 **CSS Variables:**
@@ -110,7 +110,7 @@ Pure black with deep navy depth and warm amber accent. Bold, contemporary, high 
   --surface:        #14213D;
   --on-accent:      #000000;
 
-  --font-title: 'Syne', -apple-system, Arial, sans-serif;
+  --font-title: 'Archivo Black', -apple-system, Arial, sans-serif;
   --font-body:  'DM Sans', -apple-system, Arial, sans-serif;
 }
 
@@ -126,7 +126,7 @@ Pure black with deep navy depth and warm amber accent. Bold, contemporary, high 
 **Signature elements:**
 - Pure black `#000000` on content slides; deep navy `#14213D` on cover/closing.
 - Amber `#FCA311` accent — spark, ONE highlight word, CTA, stat numbers, active states.
-- Syne 700–800 for all display text (geometric, aggressive).
+- Archivo Black 400 for all display text (bold, geometric, strong).
 - DM Sans for body.
 - Navy `#14213D` used as card/surface color on dark slides — creates depth layers.
 - Chart bars: amber tint ramp (`#FCA311` full → `rgba(252,163,17,.65)` → `rgba(252,163,17,.30)`).
@@ -235,7 +235,7 @@ Split panel white/blue. Strong quote typography as hero. Manrope 800 throughout.
 Palette: `#0a0a0a` dark, `#4361ee` accent, `#ffffff` light.
 
 ### Creative Voltage
-Electric blue + neon yellow, halftone textures. Syne + Space Mono.
+Electric blue + neon yellow, halftone textures. Archivo Black + Space Mono.
 Palette: `#0066ff` primary, `#1a1a2e` dark, `#d4ff00` neon.
 
 ### Dark Botanical
@@ -321,7 +321,7 @@ The 12 curated presets below are available for use directly (no bold-template-pa
 
 **#6 · Creative Voltage** — Bold, creative, energetic, retro-modern
 - Layout: Split panels — electric blue left, dark right. Script accents.
-- Fonts: `Syne` (700/800), `Space Mono` (400/700)
+- Fonts: `Archivo Black` (400), `Space Mono` (400/700)
 - Colors: `--bg-primary: #0066ff; --bg-dark: #1a1a2e; --accent-neon: #d4ff00; --text-light: #fff;`
 - Signature: Electric blue + neon yellow, halftone textures, neon badges/callouts
 
@@ -395,11 +395,11 @@ The 12 curated presets below are available for use directly (no bold-template-pa
 | Preset | Display Font | Body Font | Source |
 |--------|-------------|-----------|--------|
 | Brand | Crimson Pro | Manrope | Google |
-| Dark-Midnight | Syne | DM Sans | Google |
+| Dark-Midnight | Archivo Black | DM Sans | Google |
 | Light-Serenity | Plus Jakarta Sans | Plus Jakarta Sans | Google |
 | Bold Signal | Archivo Black | Space Grotesk | Google |
 | Electric Studio | Manrope | Manrope | Google |
-| Creative Voltage | Syne | Space Mono | Google |
+| Creative Voltage | Archivo Black | Space Mono | Google |
 | Dark Botanical | Cormorant | IBM Plex Sans | Google |
 | Notebook Tabs | Bodoni Moda | DM Sans | Google |
 | Pastel Geometry | Plus Jakarta Sans | Plus Jakarta Sans | Google |
