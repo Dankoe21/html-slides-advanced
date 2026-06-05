@@ -89,16 +89,16 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Archivo Black | 400 | ~50–70pt | Cover title, closing title |
-| Archivo Black | 400 | ~33–45pt | Slide titles (h2) |
-| Archivo Black | 400 | ~25–35pt | Sub-headings, agenda numbers |
+| Manrope | 800 ExtraBold | ~50–70pt | Cover title, closing title |
+| Manrope | 800 ExtraBold | ~33–45pt | Slide titles (h2) |
+| Manrope | 400–500 | ~25–35pt | Sub-headings, agenda numbers, body text |
 | DM Sans | 500 Medium | ~15–18pt | Eyebrows / labels |
 | DM Sans | 400 Regular | ~16–20pt | Body text |
 | DM Sans | 600 SemiBold | ~15–18pt | Bullets, stat labels |
 | DM Sans | 400 Regular | ~15pt | Captions, footnotes |
 | Courier New / monospace | 400 | ~15pt | Code blocks |
 
-*Source: Google Fonts*
+*Source: Google Fonts · Single-font system*
 
 ---
 
@@ -217,8 +217,9 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Archivo Black | 400 | ~50–70pt titles / ~33–45pt headings | All display headlines |
-| Space Mono | 400–700 | ~15–18pt body / ~13–15pt captions | Body text, labels, code-style copy |
+| Manrope | 800 ExtraBold | ~50–70pt titles / ~33–45pt headings | All display text, titles, hero text |
+| Manrope | 400–500 | ~15–20pt body | All body text, labels |
+| Space Mono | 400–700 | ~13–15pt captions | Body text, labels, code-style copy |
 
 *Source: Google Fonts*
 
@@ -1124,7 +1125,7 @@ Each entry shows:
 
 | Font | Weight | Size Range (pt @ 1280px) | Applied To |
 |------|--------|--------------------------|------------|
-| Archivo Black | 400 | ~50–70pt titles / ~33–45pt headings | Display headlines — bold, confident |
+| Manrope | 800 ExtraBold | ~50–70pt titles / ~33–45pt headings | Display headlines — clean, powerful |
 | Space Grotesk | 400–500 | ~15–20pt body / ~13–15pt captions | Body text, card labels, captions |
 
 *Source: Google Fonts*

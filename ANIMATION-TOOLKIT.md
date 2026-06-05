@@ -169,12 +169,13 @@ A top-to-bottom light shimmer that fires once on slide entry. Used on the **Code
   content: '';
   position: absolute;
   inset: 0;
+  /* Bright sweep — override --lum-rgb per style for max visibility */
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(255, 255, 255, 0.07) 40%,
-    rgba(255, 255, 255, 0.13) 50%,
-    rgba(255, 255, 255, 0.07) 60%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.18) 35%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.38) 50%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.18) 65%,
     transparent 100%
   );
   transform: translateY(-110%);
@@ -191,6 +192,17 @@ A top-to-bottom light shimmer that fires once on slide entry. Used on the **Code
   to   { transform: translateY(110%); }
 }
 ```
+
+**Color — always use a bright, visible accent (not white on dark):**
+```css
+:root { --lum-rgb: 211, 11, 0; }           /* Brand — red sweep */
+.code-slide  { --lum-rgb: 91, 168, 245; }   /* Code block — electric blue */
+.quote-slide { --lum-rgb: 212, 165, 116; }  /* Quote — warm gold */
+/* Dark Midnight */ --lum-rgb: 252, 163, 17; /* amber */
+/* Creative Voltage */ --lum-rgb: 212, 255, 0; /* neon yellow */
+/* Light Serenity */ --lum-rgb: 39, 48, 67;   /* slate */
+```
+White (`255,255,255`) at 0.07 opacity is invisible on dark slides. Use full-saturation accent colors at 0.18–0.38 opacity for a sweep that is actually seen.
 
 **Timing:** delay of 0.6s on Code Block card (fires after the card slides in from right). Delay of 0.5s on Quote blockquote, 0.7s on Quote portrait card.
 

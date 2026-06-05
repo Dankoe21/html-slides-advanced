@@ -789,12 +789,13 @@ Load Chart.js from CDN in `<head>`:
   content: '';
   position: absolute;
   inset: 0;
+  /* Use a bright accent color for visibility — override per style if needed */
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(255, 255, 255, 0.07) 40%,
-    rgba(255, 255, 255, 0.13) 50%,
-    rgba(255, 255, 255, 0.07) 60%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.18) 35%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.38) 50%,
+    rgba(var(--lum-rgb, 255, 255, 255), 0.18) 65%,
     transparent 100%
   );
   transform: translateY(-110%);
