@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Slides Advanced — Style Picker</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #100202;
+    --paper: #FBEFD9;
+    --red: #D30B00;
+    --border: rgba(16,2,2,0.12);
+    --card-bg: #fff;
+    --body-bg: #f4f0e8;
+    --core-bg: #fff9f2;
+    --core-border: #D30B00;
+  }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--body-bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 32px 80px;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .site-header h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .site-header h1 em { color: var(--red); font-style: italic; }
+
+  .site-header p {
+    font-size: 16px;
+    color: rgba(16,2,2,0.55);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== FILTERS ===== */
+  .filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--card-bg);
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    color: rgba(16,2,2,0.6);
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--red); color: var(--red); }
+  .filter-btn.active { background: var(--ink); color: #FBEFD9; border-color: var(--ink); }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(211,11,0,0.20);
+  }
+
+  /* ===== CORE SECTION BOX ===== */
+  .core-box {
+    border: 2px solid var(--red);
+    border-radius: 16px;
+    background: var(--core-bg);
+    padding: 24px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .core-box-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 100px;
+  }
+
+  /* ===== GRID ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .core-box .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+  /* ===== STYLE CARD ===== */
+  .style-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    position: relative;
+  }
+
+  .style-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(16,2,2,0.12);
+    border-color: rgba(16,2,2,0.25);
+  }
+
+  .style-card.selected {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(211,11,0,0.15), 0 8px 28px rgba(211,11,0,0.12);
+  }
+
+  /* Number badge */
+  .card-num {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 0.04em;
+    margin-right: 5px;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .style-card.selected .card-num {
+    color: var(--red);
+  }
+
+  /* Swatch strip */
+  .swatch-strip {
+    display: flex;
+    height: 52px;
+    width: 100%;
+  }
+
+  .swatch {
+    flex: 1;
+    height: 100%;
+    transition: flex 0.2s;
+  }
+
+  .style-card:hover .swatch { flex: 1.15; }
+  .style-card:hover .swatch:first-child { flex: 1.4; }
+
+  /* Card body */
+  .card-body {
+    padding: 14px 16px 16px;
+  }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .card-tagline {
+    font-size: 12px;
+    color: rgba(16,2,2,0.55);
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .card-tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(16,2,2,0.06);
+    color: rgba(16,2,2,0.5);
+    text-transform: uppercase;
+  }
+
+  /* Scheme indicator */
+  .scheme-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .scheme-dot.dark  { background: #100202; }
+  .scheme-dot.light { background: #d4c9b0; border: 1px solid #a09880; }
+  .scheme-dot.mixed { background: linear-gradient(90deg, #100202 50%, #d4c9b0 50%); border: 1px solid #a09880; }
+
+  /* Scheme + Formality rows */
+  .meta-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .meta-key {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(16,2,2,0.35);
+    width: 62px;
+    flex-shrink: 0;
+  }
+
+  .meta-val {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(16,2,2,0.55);
+  }
+
+  .form-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(16,2,2,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .form-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  /* ===== SELECTION BANNER ===== */
+  .selection-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    transform: translateX(-50%) translateY(12px);
+    white-space: nowrap;
+    z-index: 100;
+  }
+
+  .selection-banner.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .banner-accent { color: #FCA311; }
+
+  /* ===== HIDDEN CARD ===== */
+  .style-card.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>HTML Slides Advanced — <em>Style Picker</em></h1>
+  <p>All 49 design systems. Click any card to select it, then copy the number or name into your Q5 answer.</p>
+</header>
+
+<!-- Filters -->
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-filter="all">All 49</button>
+  <button class="filter-btn" data-filter="core">★ Core (1–3)</button>
+  <button class="filter-btn" data-filter="dark">Dark</button>
+  <button class="filter-btn" data-filter="light">Light</button>
+  <button class="filter-btn" data-filter="mixed">Mixed</button>
+  <button class="filter-btn" data-filter="high">High Formality</button>
+  <button class="filter-btn" data-filter="low">Low / Expressive</button>
+  <button class="filter-btn" data-filter="editorial">Editorial</button>
+  <button class="filter-btn" data-filter="playful">Playful</button>
+  <button class="filter-btn" data-filter="tech">Tech / Dev</button>
+</div>
+
+<!-- Core section -->
+<div class="section-label">★ Core Styles — Start Here</div>
+<div class="core-box">
+  <div class="core-box-label">★ CORE — Polished &amp; ready to use</div>
+  <div class="grid" id="core-grid"></div>
+</div>
+
+<!-- Curated presets -->
+<div class="section-label">Curated Presets (#4–15)</div>
+<div class="grid" id="presets-grid"></div>
+
+<!-- Bold template library -->
+<div class="section-label">Bold Template Library (#16–49)</div>
+<div class="grid" id="bold-grid"></div>
+
+<!-- Selection banner -->
+<div class="selection-banner" id="selectionBanner">
+  Selected: <span class="banner-accent" id="bannerText">—</span> &nbsp;·&nbsp; Type the name in Q5 ↑
+</div>
+
+<script>
+// =====================================================
+// STYLE DATA — all 49 design systems
+// =====================================================
+const STYLES = [
+  // ─── CORE (1–3) ───
+  {
+    id: 1, name: "Brand", subtitle: "Default",
+    colors: ["#FBEFD9","#100202","#D30B00","#FFFFFF"],
+    tagline: "Warm editorial. Cream paper, near-black ink, sharp red accent. Serif headlines.",
+    formality: "high", scheme: "mixed",
+    tags: ["editorial","pitch","conference","creator"],
+    group: "core"
+  },
+  {
+    id: 2, name: "Dark", subtitle: "Midnight Sun Fun",
+    colors: ["#000000","#14213D","#FCA311","#F5F0E8"],
+    tagline: "Pure black, deep navy, warm amber. Bold, high-contrast, contemporary.",
+    formality: "medium", scheme: "dark",
+    tags: ["tech","developer","product","keynote"],
+    group: "core"
+  },
+  {
+    id: 3, name: "Light", subtitle: "Minimalist Serenity",
+    colors: ["#EFF6EE","#273043","#9197AE","#FFFFFF"],
+    tagline: "Soft sage, deep slate, muted silver. Calm, refined, trustworthy.",
+    formality: "high", scheme: "light",
+    tags: ["executive","investor","finance","strategy"],
+    group: "core"
+  },
+  // ─── CURATED PRESETS (4–15) ───
+  {
+    id: 4, name: "Bold Signal",
+    colors: ["#1a1a1a","#FF5722","#ffffff"],
+    tagline: "Dark gradient, bold orange focal card, large section numbers. High-impact.",
+    formality: "medium", scheme: "dark",
+    tags: ["agency","startup","design","founder"],
+    group: "preset"
+  },
+  {
+    id: 5, name: "Electric Studio",
+    colors: ["#0a0a0a","#ffffff","#4361ee"],
+    tagline: "High-contrast split panel — dark/white. Strong typographic presence.",
+    formality: "medium-high", scheme: "mixed",
+    tags: ["product","investor","brand","keynote"],
+    group: "preset"
+  },
+  {
+    id: 6, name: "Creative Voltage",
+    colors: ["#0066ff","#1a1a2e","#d4ff00","#ffffff"],
+    tagline: "Electric blue, neon yellow, halftone textures. Energized, retro-modern.",
+    formality: "low", scheme: "dark",
+    tags: ["creative","developer","hackathon","AI"],
+    group: "preset"
+  },
+  {
+    id: 7, name: "Dark Botanical",
+    colors: ["#0f0f0f","#e8e4df","#d4a574","#e8b4b8"],
+    tagline: "Very dark, soft blurred gradient blobs. Elegant, gallery feel.",
+    formality: "medium-high", scheme: "dark",
+    tags: ["luxury","fashion","gallery","wellness"],
+    group: "preset"
+  },
+  {
+    id: 8, name: "Notebook Tabs",
+    colors: ["#f8f6f1","#2d2d2d","#98d4bb","#c7b8ea","#f4b8c5"],
+    tagline: "Cream paper card on dark, colorful editorial tabs on right edge.",
+    formality: "medium-high", scheme: "mixed",
+    tags: ["editorial","conference","annual report"],
+    group: "preset"
+  },
+  {
+    id: 9, name: "Pastel Geometry",
+    colors: ["#c8d9e6","#faf9f7","#f0b4d4","#a8d4c4"],
+    tagline: "White card on pastel, rounded vertical pills. Friendly, organized.",
+    formality: "low", scheme: "light",
+    tags: ["lifestyle","SaaS","education","wellness"],
+    group: "preset"
+  },
+  {
+    id: 10, name: "Split Pastel",
+    colors: ["#f5e6dc","#e4dff0","#c8f0d8","#f0f0c8"],
+    tagline: "Two-color vertical split, badge pills, grid accents. Playful.",
+    formality: "low", scheme: "light",
+    tags: ["creator","DTC","beauty","wellness"],
+    group: "preset"
+  },
+  {
+    id: 11, name: "Vintage Editorial",
+    colors: ["#f5f3ee","#1a1a1a","#e8d4c0"],
+    tagline: "Warm cream, abstract geometric shapes, confident bold personality.",
+    formality: "medium", scheme: "light",
+    tags: ["brand","editorial","creative","founder"],
+    group: "preset"
+  },
+  {
+    id: 12, name: "Neon Cyber",
+    colors: ["#0a0f1c","#00ffcc","#ff00aa","#ffffff"],
+    tagline: "Deep navy, cyan, magenta. Futuristic, particle backgrounds, techy.",
+    formality: "low", scheme: "dark",
+    tags: ["AI","cybersecurity","gaming","developer"],
+    group: "preset"
+  },
+  {
+    id: 13, name: "Terminal Green",
+    colors: ["#0d1117","#39d353"],
+    tagline: "GitHub dark, terminal green, monospace only, scan lines.",
+    formality: "low", scheme: "dark",
+    tags: ["developer","CLI","open source","hacker"],
+    group: "preset"
+  },
+  {
+    id: 14, name: "Swiss Modern",
+    colors: ["#ffffff","#000000","#ff3300"],
+    tagline: "Pure white, pure black, red. Bauhaus grid, precise and asymmetric.",
+    formality: "medium-high", scheme: "light",
+    tags: ["design","architecture","editorial","research"],
+    group: "preset"
+  },
+  {
+    id: 15, name: "Paper & Ink",
+    colors: ["#faf9f7","#1a1a1a","#c41e3a"],
+    tagline: "Warm cream, Cormorant Garamond serifs, crimson. Literary, elegant.",
+    formality: "high", scheme: "light",
+    tags: ["editorial","cultural","academic","advisory"],
+    group: "preset"
+  },
+  // ─── BOLD TEMPLATE LIBRARY (16–49) ───
+  {
+    id: 16, name: "8-Bit Orbit",
+    colors: ["#0a0514","#00ffcc","#ff00ff","#ffffff"],
+    tagline: "Pixel neon arcade on deep void. CRT screen at 2am.",
+    formality: "low", scheme: "dark",
+    tags: ["gaming","web3","hackathon","synthwave"],
+    group: "bold"
+  },
+  {
+    id: 17, name: "Biennale Yellow",
+    colors: ["#f5f0dc","#ffd700","#1a1a1a"],
+    tagline: "Solar yellow on warm parchment. Dutch editorial calm.",
+    formality: "high", scheme: "light",
+    tags: ["arts","design","conference","cultural"],
+    group: "bold"
+  },
+  {
+    id: 18, name: "BlockFrame",
+    colors: ["#ffffff","#000000","#5544ff","#ff55aa","#aaff44"],
+    tagline: "Neobrutalist, chunky black borders, pastel-neon blocks.",
+    formality: "low", scheme: "light",
+    tags: ["indie SaaS","agency","creative","brand"],
+    group: "bold"
+  },
+  {
+    id: 19, name: "Blue Professional",
+    colors: ["#f8f6f1","#0071e3","#1a1a2e","#f0f4ff"],
+    tagline: "Cream paper, cobalt blue. Modern, lightly authoritative.",
+    formality: "medium-high", scheme: "light",
+    tags: ["B2B","consulting","advisory","investor"],
+    group: "bold"
+  },
+  {
+    id: 20, name: "Bold Poster",
+    colors: ["#fff8f0","#1a1a1a","#D30B00"],
+    tagline: "Minimal copy, maximum typographic presence. Magazine cover feel.",
+    formality: "medium", scheme: "light",
+    tags: ["brand","founder","editorial","manifesto"],
+    group: "bold"
+  },
+  {
+    id: 21, name: "Broadside",
+    colors: ["#0c0c10","#FF4500","#f5f0e8"],
+    tagline: "Dark editorial canvas, fire orange. Newspaper headline energy.",
+    formality: "medium-high", scheme: "dark",
+    tags: ["editorial","design talk","brand","manifesto"],
+    group: "bold"
+  },
+  {
+    id: 22, name: "Capsule",
+    colors: ["#fdf6f0","#e05a20","#2d2d2d","#f0e0d0"],
+    tagline: "Pill-shaped cards, warm bone, Y2K feel.",
+    formality: "low", scheme: "light",
+    tags: ["lifestyle","DTC","beauty","creator"],
+    group: "bold"
+  },
+  {
+    id: 23, name: "Cartesian",
+    colors: ["#fafaf8","#2c2c2c","#8b7355","#d4cdc4"],
+    tagline: "Quiet, warm-minimal, classical proportions. Restrained.",
+    formality: "high", scheme: "light",
+    tags: ["investment","white paper","advisory","gallery"],
+    group: "bold"
+  },
+  {
+    id: 24, name: "Cobalt Grid",
+    colors: ["#f8f9fa","#1e50b4","#1a1a2e","#e8edf8"],
+    tagline: "Design research bulletin. One strict cobalt accent.",
+    formality: "high", scheme: "light",
+    tags: ["research","architecture","art","academic"],
+    group: "bold"
+  },
+  {
+    id: 25, name: "Coral",
+    colors: ["#fff5f0","#e84030","#1a1a1a","#2d2020"],
+    tagline: "Warm-graphic, bold coral accent on clean background.",
+    formality: "medium", scheme: "mixed",
+    tags: ["fashion","fitness","lifestyle","agency"],
+    group: "bold"
+  },
+  {
+    id: 26, name: "Creative Mode",
+    colors: ["#f8f8f6","#ff3c00","#1a1a1a","#ffe8e0"],
+    tagline: "Strong card layouts, expressive type and color. Design-led.",
+    formality: "medium", scheme: "light",
+    tags: ["creative agency","design studio","ad","brand"],
+    group: "bold"
+  },
+  {
+    id: 27, name: "Daisy Days",
+    colors: ["#fff9f0","#ff8c42","#4ecdc4","#ffd93d","#2d2d2d"],
+    tagline: "Friendly, warm, cheerful pastels. Rounded and joyful.",
+    formality: "low", scheme: "light",
+    tags: ["education","kids","wellness","workshop"],
+    group: "bold"
+  },
+  {
+    id: 28, name: "Editorial Forest",
+    colors: ["#f2f5f0","#2d4a38","#3d3d35","#c8d8c0"],
+    tagline: "Quiet sage tones, considered literary mood.",
+    formality: "medium", scheme: "mixed",
+    tags: ["quarterly review","studio","creative","editorial"],
+    group: "bold"
+  },
+  {
+    id: 29, name: "Editorial Tri-Tone",
+    colors: ["#f5f0e8","#1a1a1a","#c8956c"],
+    tagline: "Three deliberate tones, serif/sans contrast. Fashion magazine.",
+    formality: "medium-high", scheme: "mixed",
+    tags: ["fashion","lifestyle","editorial","art direction"],
+    group: "bold"
+  },
+  {
+    id: 30, name: "Emerald Editorial",
+    colors: ["#f8fdf8","#1a4a2a","#1a1a1a","#d0e8d4"],
+    tagline: "Forest green masthead rule, serious editorial gravitas.",
+    formality: "medium-high", scheme: "mixed",
+    tags: ["leadership","strategy","product","editorial"],
+    group: "bold"
+  },
+  {
+    id: 31, name: "Grove",
+    colors: ["#f5f2ec","#4a6741","#2d2820","#c8b89a"],
+    tagline: "Organic, earthy serif typography, botanical calm.",
+    formality: "medium-high", scheme: "mixed",
+    tags: ["sustainability","nature","winery","advisory"],
+    group: "bold"
+  },
+  {
+    id: 32, name: "Long Table",
+    colors: ["#faf8f3","#c8651e","#2d2520","#f0e8d8"],
+    tagline: "Warm, intimate, hospitality-forward. Single warm accent.",
+    formality: "medium", scheme: "light",
+    tags: ["restaurant","events","lifestyle","membership"],
+    group: "bold"
+  },
+  {
+    id: 33, name: "Mat",
+    colors: ["#f0ebe3","#c86428","#1e1a14","#d8cfc4"],
+    tagline: "Mid-century, tactile, intentional. Analog feel.",
+    formality: "medium", scheme: "mixed",
+    tags: ["design studio","architecture","craft","furniture"],
+    group: "bold"
+  },
+  {
+    id: 34, name: "Monochrome",
+    colors: ["#fffef8","#111111","#e0e0d8"],
+    tagline: "Black and white only. Words are the only thing on the page.",
+    formality: "high", scheme: "light",
+    tags: ["research","white paper","academic","advisory"],
+    group: "bold"
+  },
+  {
+    id: 35, name: "Neo-Grid Bold",
+    colors: ["#f5f5f3","#2828c8","#1a1a1a","#e8e8ff"],
+    tagline: "Confident, grid-structured, punchy typography. Editorial-graphic.",
+    formality: "medium", scheme: "light",
+    tags: ["design","brand","stat","founder"],
+    group: "bold"
+  },
+  {
+    id: 36, name: "People's Platform",
+    colors: ["#fff8f8","#cc2060","#1a1a1a","#ffe0ee"],
+    tagline: "Activist energy, bold block type. Honest and loud.",
+    formality: "low", scheme: "light",
+    tags: ["manifesto","civic","mission","activist"],
+    group: "bold"
+  },
+  {
+    id: 37, name: "Pin & Paper",
+    colors: ["#f8f5f0","#8b6914","#2d2520","#e8e0d4"],
+    tagline: "Hand-crafted, warm, literary. Safety-pin aesthetic.",
+    formality: "medium", scheme: "light",
+    tags: ["research","brand story","workshop","qualitative"],
+    group: "bold"
+  },
+  {
+    id: 38, name: "Pink Script — After Hours",
+    colors: ["#1a0510","#ff6496","#f0e8f0","#2d0820"],
+    tagline: "Nocturnal, luxe, moody. Script accents on dark.",
+    formality: "medium-high", scheme: "dark",
+    tags: ["fashion","nightlife","luxury","editorial"],
+    group: "bold"
+  },
+  {
+    id: 39, name: "Playful",
+    colors: ["#f0fff4","#0a7040","#2d3d30","#c8f0d8"],
+    tagline: "Warm, rounded, approachable. Indie and human.",
+    formality: "low", scheme: "light",
+    tags: ["creator","indie","lifestyle","newsletter"],
+    group: "bold"
+  },
+  {
+    id: 40, name: "Raw Grid",
+    colors: ["#f8f8f8","#e82020","#111111","#ffe8e8"],
+    tagline: "Direct, graphic-confident, no-nonsense layouts.",
+    formality: "low", scheme: "light",
+    tags: ["founder","accelerator","stat","comparison"],
+    group: "bold"
+  },
+  {
+    id: 41, name: "Retro Windows",
+    colors: ["#c0c0c0","#000080","#ffffff","#ff0000"],
+    tagline: "Nostalgic early OS aesthetic. Knowingly retro.",
+    formality: "low", scheme: "light",
+    tags: ["retro","Y2K","tech-history","gaming"],
+    group: "bold"
+  },
+  {
+    id: 42, name: "Retro Zine",
+    colors: ["#f5f0e0","#e8430a","#1a1a1a","#2244aa"],
+    tagline: "Riso-print warmth, lo-fi crafted feel.",
+    formality: "low", scheme: "light",
+    tags: ["indie","zine","music","community"],
+    group: "bold"
+  },
+  {
+    id: 43, name: "Sakura Chroma",
+    colors: ["#fef9ec","#cc8800","#ff4488","#44ccff","#1a1a1a"],
+    tagline: "Vintage Japanese cassette packaging. Bold, tactile.",
+    formality: "low", scheme: "light",
+    tags: ["indie hardware","music","kawaii-tech","zine"],
+    group: "bold"
+  },
+  {
+    id: 44, name: "Scatterbrain",
+    colors: ["#fffce8","#ffee44","#ff8844","#1a1a1a"],
+    tagline: "Post-it notes, Caveat handwriting, workshop feel.",
+    formality: "low", scheme: "light",
+    tags: ["brainstorm","workshop","design-thinking","ideation"],
+    group: "bold"
+  },
+  {
+    id: 45, name: "Signal",
+    colors: ["#f8faff","#1e2d5a","#b8960a","#e8edf8"],
+    tagline: "Deep navy, antique gold. Institutional, board-level trust.",
+    formality: "high", scheme: "mixed",
+    tags: ["investor","board","consulting","legal"],
+    group: "bold"
+  },
+  {
+    id: 46, name: "Soft Editorial",
+    colors: ["#fef8f2","#b46040","#2d2018","#e8c8a8"],
+    tagline: "Cormorant Garamond, warm paper, sage/blush accents. Literary.",
+    formality: "high", scheme: "light",
+    tags: ["editorial","gallery","advisory","founder essay"],
+    group: "bold"
+  },
+  {
+    id: 47, name: "Stencil & Tablet",
+    colors: ["#f5f2ea","#6a5028","#1e1a10","#d8cdb0"],
+    tagline: "Bone paper, stencil headlines, six-color earth palette.",
+    formality: "medium-high", scheme: "light",
+    tags: ["museum","cultural","architecture","manifesto"],
+    group: "bold"
+  },
+  {
+    id: 48, name: "Studio",
+    colors: ["#0a0a0a","#FFD600","#f5f5f5"],
+    tagline: "Electric yellow on pure black. The slide is the brand statement.",
+    formality: "medium", scheme: "dark",
+    tags: ["studio","creative agency","fashion","brand"],
+    group: "bold"
+  },
+  {
+    id: 49, name: "Vellum",
+    colors: ["#0d1b2a","#c8a96e","#e8e4d8","#1e3048"],
+    tagline: "Deep navy canvas, Cormorant serifs, warm gold. Scholarly.",
+    formality: "high", scheme: "dark",
+    tags: ["research","white paper","academic","advisory"],
+    group: "bold"
+  }
+];
+
+// =====================================================
+// RENDER CARDS
+// =====================================================
+function formalityWidth(f) {
+  return { "low": "25%", "medium-low": "38%", "medium": "52%", "medium-high": "68%", "high": "88%" }[f] || "52%";
+}
+
+function makeCard(s) {
+  const card = document.createElement('div');
+  card.className = 'style-card';
+  card.dataset.id   = s.id;
+  card.dataset.group = s.group;
+  card.dataset.scheme = s.scheme;
+  card.dataset.formality = s.formality;
+  card.dataset.tags = s.tags.join(' ').toLowerCase();
+  card.dataset.name = s.name.toLowerCase();
+
+  const swatches = s.colors.map(c =>
+    `<div class="swatch" style="background:${c};"></div>`
+  ).join('');
+
+  const tags = s.tags.slice(0,3).map(t =>
+    `<span class="card-tag">${t}</span>`
+  ).join('');
+
+  const subtitle = s.subtitle ? ` <small style="font-weight:400;color:rgba(16,2,2,0.45);font-size:12px;">— ${s.subtitle}</small>` : '';
+
+  const schemeDot = `<span class="scheme-dot ${s.scheme}"></span>`;
+
+  card.innerHTML = `
+    <div class="swatch-strip">${swatches}</div>
+    <div class="card-body">
+      <div class="card-name"><span class="card-num">#${s.id}</span>${s.name}${subtitle}</div>
+      <div class="card-tagline">${s.tagline}</div>
+      <div class="card-tags">${tags}</div>
+      <div class="meta-rows">
+        <div class="meta-row">
+          <div class="meta-key">Scheme</div>
+          <div class="meta-val">${schemeDot}${s.scheme}</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Formality</div>
+          <div class="form-bar"><div class="form-fill" style="width:${formalityWidth(s.formality)};"></div></div>
+          <div class="meta-val">${s.formality}</div>
+        </div>
+      </div>
+    </div>`;
+
+  card.addEventListener('click', () => selectCard(card, s));
+  return card;
+}
+
+// Render into sections
+const coreGrid    = document.getElementById('core-grid');
+const presetsGrid = document.getElementById('presets-grid');
+const boldGrid    = document.getElementById('bold-grid');
+
+STYLES.forEach(s => {
+  const card = makeCard(s);
+  if (s.group === 'core')   coreGrid.appendChild(card);
+  else if (s.group === 'preset') presetsGrid.appendChild(card);
+  else boldGrid.appendChild(card);
+});
+
+// =====================================================
+// SELECTION
+// =====================================================
+let selectedId = null;
+
+function selectCard(card, s) {
+  document.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedId = s.id;
+
+  const banner = document.getElementById('selectionBanner');
+  document.getElementById('bannerText').textContent = `#${s.id} · ${s.name}`;
+  banner.classList.add('show');
+
+  setTimeout(() => { if (selectedId === s.id) banner.classList.remove('show'); }, 4000);
+}
+
+// =====================================================
+// FILTERING
+// =====================================================
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const f = btn.dataset.filter;
+  const all = document.querySelectorAll('.style-card');
+
+  all.forEach(card => {
+    let show = true;
+    if      (f === 'all')      show = true;
+    else if (f === 'core')     show = card.dataset.group === 'core';
+    else if (f === 'dark')     show = card.dataset.scheme === 'dark';
+    else if (f === 'light')    show = card.dataset.scheme === 'light';
+    else if (f === 'mixed')    show = card.dataset.scheme === 'mixed';
+    else if (f === 'high')     show = card.dataset.formality === 'high';
+    else if (f === 'low')      show = ['low','medium-low'].includes(card.dataset.formality);
+    else if (f === 'editorial')show = /editorial|literary|broadside|paper|vellum|soft|biennale|cobalt|cartesian/i.test(card.dataset.name + ' ' + card.dataset.tags);
+    else if (f === 'playful')  show = /playful|daisy|scatterbrain|sakura|retro|capsule|split pastel|pastel|daisy|blockframe/i.test(card.dataset.name + ' ' + card.dataset.tags);
+    else if (f === 'tech')     show = /developer|gaming|terminal|cyber|hacker|8-bit|web3|hackathon|CLI|developer/i.test(card.dataset.name + ' ' + card.dataset.tags);
+
+    card.classList.toggle('hidden', !show);
+  });
+
+  // Hide/show section wrappers when all their cards are filtered out
+  const coreBox   = document.querySelector('.core-box');
+  const coreLabel = coreBox.previousElementSibling;
+  const coreVisible = document.querySelectorAll('#core-grid .style-card:not(.hidden)').length > 0;
+  coreBox.style.display   = coreVisible ? '' : 'none';
+  coreLabel.style.display = coreVisible ? '' : 'none';
+
+  const presetsG     = document.getElementById('presets-grid');
+  const presetsLabel = presetsG.previousElementSibling;
+  const presetsVisible = document.querySelectorAll('#presets-grid .style-card:not(.hidden)').length > 0;
+  presetsG.style.display     = presetsVisible ? '' : 'none';
+  presetsLabel.style.display = presetsVisible ? '' : 'none';
+
+  const boldG     = document.getElementById('bold-grid');
+  const boldLabel = boldG.previousElementSibling;
+  const boldVisible = document.querySelectorAll('#bold-grid .style-card:not(.hidden)').length > 0;
+  boldG.style.display     = boldVisible ? '' : 'none';
+  boldLabel.style.display = boldVisible ? '' : 'none';
+});
+</script>
+</body>
+</html>

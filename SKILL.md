@@ -19,6 +19,7 @@ Single HTML file. No npm, no build tools, no frameworks.
 5. **12 Canonical Formats** — Use a variety of the 12 layout formats in `FORMATS.md`. Never repeat the same layout on consecutive slides. Bullets on at most one-third of slides.
 6. **Calibrated Copy** — Slide density is set by presentation type and audience mode. Slides should never read like a document.
 7. **Visual QA (REQUIRED)** — Render PNGs and inspect with a subagent after generation. Never deliver without QA.
+8. **Memory (REQUIRED)** — Read `memory.md` before beginning any session. Append a 3–5 sentence entry after every meaningful session (QA run, user correction, design decision, skill update). Newest entry on top.
 
 ---
 
@@ -127,62 +128,85 @@ Actively resist generic AI convergence:
 
 ---
 
-**Q5 — Design system:** Choose your visual style.
+**Q5 — Design system:** Choose your visual style. All 49 are available — type the number or name.
 
-**Core Styles** — polished, ready to use:
+---
 
-| | Name | Look & Feel | Colors |
-|--|------|-------------|--------|
-| 🟥⬛🟫 | **#1 · Brand** *(default)* | Warm editorial. Cream paper, near-black ink, sharp red accent. Serif headlines, clean sans body. | `#FBEFD9` · `#100202` · `#D30B00` |
-| 🟧🟦⬛ | **#2 · Dark** | Bold and contemporary. Pure black with deep navy surfaces and warm amber accent. Geometric type. | `#000000` · `#14213D` · `#FCA311` |
-| 🟩🩶⬜ | **#3 · Light** | Calm and minimalist. Soft sage background, slate text, silver midtones. Refined sans-serif. | `#EFF6EE` · `#273043` · `#9197AE` |
+> ┌─────────────────────────────────────────────────────────────┐
+> │  ★  CORE STYLES — Start here. Fully specified, always work. │
+> └─────────────────────────────────────────────────────────────┘
 
-**Additional Style Presets** — more creative and expressive options:
+| # | Colors | Name | Feel | Best For |
+|---|--------|------|------|----------|
+| **1** | `#FBEFD9` `#100202` `#D30B00` | **Brand** *(default)* | Warm editorial. Cream paper, near-black ink, sharp red. Serif + clean sans. | Pitches, product decks, conference talks, creator content, personal brand |
+| **2** | `#000000` `#14213D` `#FCA311` | **Dark** — *Midnight Sun Fun* | Pure black, deep navy, warm amber. Bold, high-contrast, contemporary. | Tech talks, developer audiences, product launches, AI/data topics |
+| **3** | `#EFF6EE` `#273043` `#9197AE` | **Light** — *Minimalist Serenity* | Soft sage, deep slate, muted silver. Calm, refined, trustworthy. | Executive, investor, healthcare, finance, board-level, strategy |
 
-| | Name | Look & Feel |
-|--|------|-------------|
-| ⬛🟥🟫 | **#4 · Bold Signal** | Dark gradient, bold colored card, large section numbers. High-impact. |
-| ⬛🟦⬜ | **#5 · Electric Studio** | Split white/dark panel. Strong quote typography as hero. |
-| 🟦⬛🟡 | **#6 · Creative Voltage** | Electric blue, neon yellow, halftone textures. Energized. |
-| ⬛🟤🌸 | **#7 · Dark Botanical** | Deep dark with soft gradient circles. Elegant and artistic. |
-| 🟫📄🎨 | **#8 · Notebook Tabs** | Cream paper card with colorful section tabs on right edge. |
-| 🩶⬜🌸 | **#9 · Pastel Geometry** | White card on pastel, vertical pills. Friendly and organized. |
-| 🍑🪻🌿 | **#10 · Split Pastel** | Two-color split background. Playful badges and grid accents. |
-| 🟫⬜📐 | **#11 · Vintage Editorial** | Cream, geometric shapes, confident personality. Witty. |
-| 🌐🟦💜 | **#12 · Neon Cyber** | Deep navy, cyan, magenta. Futuristic and techy. |
-| ⬛🟩💻 | **#13 · Terminal Green** | GitHub dark, terminal green, monospace only. Developer. |
-| ⬜⬛🟥 | **#14 · Swiss Modern** | White, black, red. Bauhaus-inspired, precise grid. |
-| 🟫⬜🔴 | **#15 · Paper & Ink** | Warm cream, Cormorant Garamond, crimson. Literary. |
-| ⬛🟡📰 | **#17 · Biennale Yellow** | Solar yellow editorial. Dutch poster energy. |
-| ⬛🟠📋 | **#21 · Broadside** | Newspaper editorial on dark. Fire orange accent. |
-| ⬛💜🌙 | **#38 · Pink Script — After Hours** | Nocturnal and moody. Script accents. |
-| ⬛🟡🎬 | **#48 · Studio** | Electric yellow on pure black. High voltage creative. |
-| 🌑🟤📚 | **#49 · Vellum** | Navy canvas, Cormorant serifs. Scholarly and advisory. |
-| 🎮🟦💫 | **#16 · 8-Bit Orbit** | Pixel neon arcade aesthetic. Retro-tech. |
-| 🟡🔵📐 | **#35 · Neo-Grid Bold** | Confident, punchy, grid-structured. |
-| 🌸⬜🎭 | **#27 · Daisy Days** | Cheerful, playful, light and warm. |
-| 🟩🟫📖 | **#28 · Editorial Forest** | Quiet editorial, sage tones, mixed scheme. |
-| 🟤🟫🌿 | **#30 · Emerald Editorial** | Warm editorial, considered, medium formality. |
-| 🌿🟢📋 | **#31 · Grove** | Organic and considered. |
-| 🟫🟠🏺 | **#47 · Stencil & Tablet** | Bone paper, stencil headlines, earthy. |
-| 🌸🎌🌈 | **#43 · Sakura Chroma** | Vintage Japanese cassette aesthetic. |
-| 📝💛🗂 | **#44 · Scatterbrain** | Post-it notes, handwriting, workshop feel. |
-| 🌿💚💛 | **#39 · Playful** | Warm, rounded, approachable. |
-| ⚓🟦🟡 | **#45 · Signal** | Navy and gold, institutional, board-level trust. |
-| 🌸📖🍋 | **#46 · Soft Editorial** | Cormorant Garamond, sage, blush, lemon. Literary. |
-| 🟧⬜🎭 | **#22 · Capsule** | Pill-shaped cards, warm bone, pastel pop. |
-| 🟦⬜📊 | **#24 · Cobalt Grid** | Design research, editorial, structured. |
-| 🟧⬛🌊 | **#25 · Coral** | Bold warm, mixed scheme, confident. |
-| ❤️🟥🗣 | **#36 · People's Platform (Block & Bold)** | Activist, bold block type, loud. |
-| 📌🟫🗺 | **#37 · Pin & Paper** | Crafted, handmade, pinboard aesthetic. |
-| 🟪🟦🟥 | **#18 · BlockFrame** | Neobrutalist, pastel neon, chunky borders. |
-| 🟫⬜🔲 | **#32 · Long Table** | Warm, intimate, medium formality. |
-| 🌏🟤🟢 | **#33 · Mat** | Warm-modern, considered. |
-| ⬛📖🔤 | **#34 · Monochrome** | Restrained, literary, black/white only. |
-| 🟫🎸🟡 | **#41 · Retro Windows** | Nostalgic, retro OS aesthetic. |
-| 📰🟤✂️ | **#42 · Retro Zine** | Crafted, lo-fi, cut-and-paste energy. |
+---
 
-Options: Type the name, or `Brand` for default.
+> ┌──────────────────────────────────────────────────────────┐
+> │  CURATED PRESETS — 12 fully specified, distinct voices   │
+> └──────────────────────────────────────────────────────────┘
+
+| # | Colors | Name | Feel | Best For |
+|---|--------|------|------|----------|
+| 4 | `#1a1a1a` `#FF5722` `#ffffff` | **Bold Signal** | Dark gradient, bold orange focal card, large section numbers. | Agency credentials, startup pitches, design reviews, founder keynotes |
+| 5 | `#0a0a0a` `#ffffff` `#4361ee` | **Electric Studio** | Split dark/white panel, strong typographic presence. | Product launches, investor pitches, brand showcases, keynotes |
+| 6 | `#0066ff` `#1a1a2e` `#d4ff00` | **Creative Voltage** | Electric blue, neon yellow, halftone textures. Energized. | Creative agencies, developer tools, hackathons, AI products |
+| 7 | `#0f0f0f` `#d4a574` `#e8b4b8` | **Dark Botanical** | Very dark, soft blurred gradient blobs. Elegant, gallery feel. | Luxury, fashion, galleries, wellness, premium B2B |
+| 8 | `#f8f6f1` `#2d2d2d` `#98d4bb` `#c7b8ea` | **Notebook Tabs** | Cream paper card on dark, colorful editorial tabs on right edge. | Annual reports, conference programs, editorial content |
+| 9 | `#c8d9e6` `#faf9f7` `#f0b4d4` `#a8d4c4` | **Pastel Geometry** | White card on pastel bg, rounded vertical pills. Friendly, organized. | Lifestyle, SaaS onboarding, education, community, wellness |
+| 10 | `#f5e6dc` `#e4dff0` `#c8f0d8` `#f0f0c8` | **Split Pastel** | Two-color split bg, badge pills, grid accents. Playful. | Creator portfolios, DTC launches, beauty, wellness |
+| 11 | `#f5f3ee` `#1a1a1a` `#e8d4c0` | **Vintage Editorial** | Warm cream, abstract geometric shapes, bold personality. | Brand manifestos, creative reviews, editorial pitches |
+| 12 | `#0a0f1c` `#00ffcc` `#ff00aa` | **Neon Cyber** | Deep navy, cyan, magenta. Futuristic, techy, particle bg. | AI products, cybersecurity, gaming, developer tools |
+| 13 | `#0d1117` `#39d353` | **Terminal Green** | GitHub dark, terminal green, monospace only, scan lines. | Developer talks, CLI tools, open source, hacker aesthetic |
+| 14 | `#ffffff` `#000000` `#ff3300` | **Swiss Modern** | Pure white, pure black, red. Bauhaus grid, asymmetric. | Design talks, architecture, editorial, research |
+| 15 | `#faf9f7` `#1a1a1a` `#c41e3a` | **Paper & Ink** | Warm cream, Cormorant Garamond serifs, crimson accent. Literary. | Editorial, cultural institutions, academic, advisory |
+
+---
+
+> ┌────────────────────────────────────────────────────────────────┐
+> │  BOLD TEMPLATE LIBRARY — 34 expressive, character-rich systems │
+> └────────────────────────────────────────────────────────────────┘
+
+| # | Colors | Name | Feel | Best For |
+|---|--------|------|------|----------|
+| 16 | `#0a0514` `#00ffcc` `#ff00ff` | **8-Bit Orbit** | Pixel neon arcade on deep void. CRT screen at 2am. | Gaming, cyberpunk, web3, hackathons, synthwave, indie dev |
+| 17 | `#f5f0dc` `#ffd700` `#1a1a1a` | **Biennale Yellow** | Solar yellow on warm parchment. Dutch editorial calm. | Arts institutions, design conferences, curatorial pitches |
+| 18 | `#ffffff` `#000000` `#5544ff` `#ff55aa` `#aaff44` | **BlockFrame** | Neobrutalist, chunky black borders, pastel-neon blocks. | Indie SaaS, agency credentials, creative reviews |
+| 19 | `#f8f6f1` `#0071e3` `#1a1a2e` | **Blue Professional** | Cream paper, cobalt blue. Modern, lightly authoritative. | B2B SaaS, consulting deliverables, advisory, investor reports |
+| 20 | `#fff8f0` `#1a1a1a` `#D30B00` | **Bold Poster** | Minimal copy, maximum typographic presence. Magazine cover. | Brand manifestos, founder vision, editorial pitches |
+| 21 | `#0c0c10` `#FF4500` `#f5f0e8` | **Broadside** | Dark editorial canvas, fire orange. Newspaper headline energy. | Brand manifestos, design talks, bilingual decks |
+| 22 | `#fdf6f0` `#e05a20` `#2d2d2d` `#f0e0d0` | **Capsule** | Pill-shaped cards, warm bone, Y2K feel. | Lifestyle, DTC, beauty, wellness, creator portfolios |
+| 23 | `#fafaf8` `#2c2c2c` `#8b7355` `#d4cdc4` | **Cartesian** | Quiet, warm-minimal, classical proportions. Restrained. | Investment theses, white papers, advisory, gallery decks |
+| 24 | `#f8f9fa` `#1e50b4` `#1a1a2e` `#e8edf8` | **Cobalt Grid** | Design research bulletin. One strict cobalt accent. | Studio annuals, design research, architecture, art publications |
+| 25 | `#fff5f0` `#e84030` `#1a1a1a` | **Coral** | Warm-graphic, bold coral accent on clean background. | Fashion, fitness, lifestyle brands, agency credentials |
+| 26 | `#f8f8f6` `#ff3c00` `#1a1a1a` `#ffe8e0` | **Creative Mode** | Strong card layouts, expressive type and color. Design-led. | Creative agency pitches, design studio decks, ad credentials |
+| 27 | `#fff9f0` `#ff8c42` `#4ecdc4` `#ffd93d` | **Daisy Days** | Friendly, warm, cheerful pastels. Rounded and joyful. | Educational, kids/family, wellness programs, workshops |
+| 28 | `#f2f5f0` `#2d4a38` `#3d3d35` `#c8d8c0` | **Editorial Forest** | Quiet sage tones, considered literary mood. | Quarterly reviews, studio updates, creative agency recaps |
+| 29 | `#f5f0e8` `#1a1a1a` `#c8956c` | **Editorial Tri-Tone** | Three deliberate tones, serif/sans contrast. Fashion magazine. | Fashion brands, lifestyle media, art direction reviews |
+| 30 | `#f8fdf8` `#1a4a2a` `#1a1a1a` `#d0e8d4` | **Emerald Editorial** | Forest green masthead rule, serious editorial gravitas. | Leadership readouts, strategy briefings, product launches |
+| 31 | `#f5f2ec` `#4a6741` `#2d2820` `#c8b89a` | **Grove** | Organic, earthy serif typography, botanical calm. | Sustainability, wineries, nature brands, advisory deliverables |
+| 32 | `#faf8f3` `#c8651e` `#2d2520` `#f0e8d8` | **Long Table** | Warm, intimate, hospitality-forward. Single warm accent. | Restaurants, creative events, lifestyle, membership pitches |
+| 33 | `#f0ebe3` `#c86428` `#1e1a14` `#d8cfc4` | **Mat** | Mid-century, tactile, intentional. Analog feel. | Design studios, architecture, interior brands, craft |
+| 34 | `#fffef8` `#111111` `#e0e0d8` | **Monochrome** | Black and white only. Words are the only thing on the page. | Research, white papers, academic briefs, advisory |
+| 35 | `#f5f5f3` `#2828c8` `#1a1a1a` `#e8e8ff` | **Neo-Grid Bold** | Confident, grid-structured, punchy typography. Editorial-graphic. | Design-led pitches, brand work, stat-heavy slides |
+| 36 | `#fff8f8` `#cc2060` `#1a1a1a` `#ffe0ee` | **People's Platform** | Activist energy, bold block type. Honest and loud. | Manifestos, civic decks, mission statements |
+| 37 | `#f8f5f0` `#8b6914` `#2d2520` `#e8e0d4` | **Pin & Paper** | Hand-crafted, warm, literary. Safety-pin aesthetic. | Qualitative research, brand stories, workshop debriefs |
+| 38 | `#1a0510` `#ff6496` `#f0e8f0` `#2d0820` | **Pink Script — After Hours** | Nocturnal, luxe, moody. Script accents on dark. | Fashion, nightlife/spirits, luxury reveals, editorial |
+| 39 | `#f0fff4` `#0a7040` `#2d3d30` `#c8f0d8` | **Playful** | Warm, rounded, approachable. Indie and human. | Creator portfolios, indie products, lifestyle, newsletters |
+| 40 | `#f8f8f8` `#e82020` `#111111` `#ffe8e8` | **Raw Grid** | Direct, graphic-confident, no-nonsense layouts. | Founder pitches, accelerator demos, stat slides, comparisons |
+| 41 | `#c0c0c0` `#000080` `#ffffff` `#ff0000` | **Retro Windows** | Nostalgic early OS aesthetic. Knowingly retro. | Retro gaming, Y2K brands, tech-history talks |
+| 42 | `#f5f0e0` `#e8430a` `#1a1a1a` `#2244aa` | **Retro Zine** | Riso-print warmth, lo-fi crafted feel. | Indie zines, music/arts brands, community decks |
+| 43 | `#fef9ec` `#cc8800` `#ff4488` `#44ccff` | **Sakura Chroma** | Vintage Japanese cassette packaging. Bold, tactile. | Indie hardware, music releases, kawaii-tech launches |
+| 44 | `#fffce8` `#ffee44` `#ff8844` `#1a1a1a` | **Scatterbrain** | Post-it notes, Caveat handwriting, workshop feel. | Brainstorms, workshops, design-thinking, ideation |
+| 45 | `#f8faff` `#1e2d5a` `#b8960a` `#e8edf8` | **Signal** | Deep navy, antique gold. Institutional, board-level trust. | Investor decks, board presentations, consulting deliverables |
+| 46 | `#fef8f2` `#b46040` `#2d2018` `#e8c8a8` | **Soft Editorial** | Cormorant Garamond, warm paper, sage/blush. Literary. | Editorial features, gallery decks, advisory, founder essays |
+| 47 | `#f5f2ea` `#6a5028` `#1e1a10` `#d8cdb0` | **Stencil & Tablet** | Bone paper, stencil headlines, six-color earth palette. | Museums, cultural institutions, art/architecture, manifestos |
+| 48 | `#0a0a0a` `#FFD600` `#f5f5f5` | **Studio** | Electric yellow on pure black. The slide is the brand statement. | Studio credentials, creative agency, fashion, brand showcases |
+| 49 | `#0d1b2a` `#c8a96e` `#e8e4d8` `#1e3048` | **Vellum** | Deep navy canvas, Cormorant serifs, warm gold. Scholarly. | Research synthesis, white papers, academic briefs, advisory |
+
+Type the number (1–49) or style name. Default: `Brand` (style 1).
 
 ---
 
@@ -351,3 +375,5 @@ Fix every real issue. Re-render affected slides. Re-inspect. One fix can create 
 | `bold-template-pack/selection-index.json` | Metadata for 34 bold template design systems | Phase 3 (if bold template chosen) |
 | `bold-template-pack/templates/*/design.md` | Full design system for chosen bold template | Phase 3 (if bold template chosen) |
 | `render_slides.py` | Headless Playwright renderer for QA | Phase 5 |
+| `style-picker.html` | Visual swatch reference for all 49 design systems — share with user at Q5 | Phase 1 (Q5) |
+| `memory.md` | Append-only QA and session log — read before editing, write after each session | Always |
