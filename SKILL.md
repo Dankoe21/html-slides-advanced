@@ -19,7 +19,7 @@ Single HTML file. No npm, no build tools, no frameworks.
 5. **12 Canonical Formats** — Use a variety of the 12 layout formats in `FORMATS.md`. Never repeat the same layout on consecutive slides. Bullets on at most one-third of slides.
 6. **Calibrated Copy** — Slide density is set by presentation type and audience mode. Slides should never read like a document.
 7. **Visual QA (REQUIRED)** — Render PNGs and inspect with a subagent after generation. Never deliver without QA.
-8. **Memory (REQUIRED)** — Read `memory.md` before beginning any session. Append a 3–5 sentence entry after every meaningful session (QA run, user correction, design decision, skill update). Newest entry on top.
+8. **Memory (REQUIRED)** — Read `memory.md` before beginning any session. Scan each entry for lessons that suggest an improvement to the skill itself (a missing rule, a recurring bug, a better default). If any are found, surface them to the user before proceeding — one sentence per item, flagged clearly. Append a 2–3 sentence entry after every meaningful session. Newest entry on top.
 
 ---
 
@@ -145,7 +145,7 @@ Actively resist generic AI convergence:
 ---
 
 > ┌──────────────────────────────────────────────────────────┐
-> │  CURATED PRESETS — 12 fully specified, distinct voices   │
+> │  ADDITIONAL STYLES (#4–49)                               │
 > └──────────────────────────────────────────────────────────┘
 
 | # | Colors | Name | Feel | Best For |
@@ -165,9 +165,7 @@ Actively resist generic AI convergence:
 
 ---
 
-> ┌────────────────────────────────────────────────────────────────┐
-> │  BOLD TEMPLATE LIBRARY — 34 expressive, character-rich systems │
-> └────────────────────────────────────────────────────────────────┘
+
 
 | # | Colors | Name | Feel | Best For |
 |---|--------|------|------|----------|
