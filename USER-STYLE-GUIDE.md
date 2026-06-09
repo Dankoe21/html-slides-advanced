@@ -63,11 +63,11 @@ Each entry shows:
 
 ---
 
-## #2 · Dark — "Midnight Sun Fun"
+## #2 · Dark — "Midnight Gold Sparkle"
 
 > Pure black slides with deep navy surfaces and a warm amber accent. Bold, high-contrast, and contemporary. Commands attention without feeling flashy.
 
-*Palette source: [coolors.co/palettes](https://coolors.co/palettes) — Midnight Sun Fun*
+*Palette source: [coolors.co/palettes](https://coolors.co/palettes) — Midnight Gold Sparkle*
 
 **Formality:** Medium · **Best for:** Tech talks, developer audiences, product launches, keynotes, AI/data topics
 

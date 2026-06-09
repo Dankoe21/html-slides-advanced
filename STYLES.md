@@ -80,9 +80,9 @@ Warm "paper" content slides, near-black "ink" title/closing slides, one sharp re
 
 ---
 
-## #2 · Dark — "Midnight Sun Fun"
+## #2 · Dark — "Midnight Gold Sparkle"
 
-Source: https://coolors.co/palettes — Midnight Sun Fun
+Source: https://coolors.co/palettes — Midnight Gold Sparkle
 Palette: `#000000` · `#14213D` · `#FCA311`
 
 Pure black with deep navy depth and warm amber accent. Bold, contemporary, high contrast. Great for tech talks, product launches, developer audiences.
@@ -95,7 +95,7 @@ Pure black with deep navy depth and warm amber accent. Bold, contemporary, high 
 **CSS Variables:**
 ```css
 :root {
-  /* Palette — Midnight Sun Fun */
+  /* Palette — Midnight Gold Sparkle */
   --midnight-black: #000000;
   --midnight-navy:  #14213D;
   --midnight-amber: #FCA311;

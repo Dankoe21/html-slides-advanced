@@ -139,7 +139,7 @@ Actively resist generic AI convergence:
 | # | Colors | Name | Feel | Best For |
 |---|--------|------|------|----------|
 | **1** | `#FBEFD9` `#100202` `#D30B00` | **Brand** *(default)* | Warm editorial. Cream paper, near-black ink, sharp red. Serif + clean sans. | Pitches, product decks, conference talks, creator content, personal brand |
-| **2** | `#000000` `#14213D` `#FCA311` | **Dark** — *Midnight Sun Fun* | Pure black, deep navy, warm amber. Bold, high-contrast, contemporary. | Tech talks, developer audiences, product launches, AI/data topics |
+| **2** | `#000000` `#14213D` `#FCA311` | **Dark** — *Midnight Gold Sparkle* | Pure black, deep navy, warm amber. Bold, high-contrast, contemporary. | Tech talks, developer audiences, product launches, AI/data topics |
 | **3** | `#EFF6EE` `#273043` `#9197AE` | **Light** — *Minimalist Serenity* | Soft sage, deep slate, muted silver. Calm, refined, trustworthy. | Executive, investor, healthcare, finance, board-level, strategy |
 
 ---
